@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap');
+
+.App {
+  text-align: center;
+  background-color: white;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background-color: #0089ff;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4em;
+  width: 30%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.link {
+  color: white;
+  padding: 0.8em;
+  text-decoration: none;
+  align-items: center;
+  font-weight: 600;
+}
+
+.link:hover {
+  color: #b0e1ff;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  min-height: 2px;
+  border-radius: 7px;
+  height: 2em;
+  text-align: center;
+  margin: 1em;
+  padding: 0.5em;
+}
+
+.moviestore {
+  text-align: center;
+  color: #0089ff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: large;
+  padding: 0.2em;
+  align-self: center;
+}
+
+.moviestore:hover {
+  cursor: default;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+  margin-right: 0.5em;
+}
+
+.icon {
+  height: 1.5em;
+  width: 1.5em;
+  display: flex;
+  flex-direction: row;
+}
