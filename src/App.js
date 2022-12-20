@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './Components/NavBar';
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Cart from './Components/Cart';
 import Films from './Components/Films';
 import { useState } from 'react';
@@ -18,7 +18,9 @@ function App() {
       year: "2022",
       genre: "Mystery, Thriller, Crime, Drama, Romance",
       tagline: "The Closer You Look, The Harder You Fall",
-      days: 0
+      days: 0,
+      cartDays: 0,
+      cart: 0
     },
     {
       id: 2,
@@ -31,7 +33,9 @@ function App() {
       year: "2022",
       genre: "Drama, History",
       tagline: "\"Will you go on the record?\"",
-      days: 0
+      days: 0,
+      cartDays: 0,
+      cart: 0
     },
     {
       id: 3,
@@ -44,7 +48,9 @@ function App() {
       year: "2022",
       genre: "Drama, Music",
       tagline: "Time is the essential piece of interpretation",
-      days: 0
+      days: 0,
+      cartDays: 0,
+      cart: 0
     },
     {
       id: 4,
@@ -57,7 +63,9 @@ function App() {
       year: "2022",
       genre: "Drama, Comedy",
       tagline: "Everything was fine yesterday",
-      days: 0
+      days: 0,
+      cartDays: 0,
+      cart: 0
     },
     {
       id: 5,
@@ -70,7 +78,9 @@ function App() {
       year: "2022",
       genre: "Drama",
       tagline: "Capture every moment",
-      days: 0
+      days: 0,
+      cartDays: 0,
+      cart: 0
     },
     {
       id: 6,
@@ -83,20 +93,73 @@ function App() {
       year: "2022",
       genre: "Comedy, Drama",
       tagline: "Sans filtre",
-      days: 0
-    },
+      days: 0,
+      cartDays: 0,
+      cart: 0
+    }
   ]);
+
+  const [cartNum, setCartNum] = useState(0);
+  const [cartFilms, setCartFilms] = useState([]);
+
+  function addDay(id) {
+    const updatedFilms = films.map((film) => {
+      if (film.id === id) {
+        return {...film, days: film.days + 1, cartDays: film.cartDays + 1};
+      }
+
+      return film;
+    })
+
+    setFilms(updatedFilms);
+  }
+
+  function removeDay(id) {
+    const updatedFilms = films.map((film) => {
+      if (film.id === id) {
+        return {...film, days: film.days - 1 >= 0 ? film.days - 1 : 0};
+      }
+
+      return film;
+    })
+
+    setFilms(updatedFilms);
+  }
+
+  function refreshCart(id) { 
+
+    let newFilms = films.filter((film) => film.cartDays > 0);
+    setCartFilms(newFilms);
+
+    const updatedFilms = films.map((film) => {
+      if (film.id === id && film.days > 0) {
+        if (film.cart !== 1) {
+          setCartNum(cartNum + 1);
+        }
+        return {...film, days: 0, cartDays: film.cartDays, cart: 1};
+      }
+
+        
+      return film;
+    });
+
+    setFilms(updatedFilms);
+  }
+  
+  function emptyCart() {
+
+  }
 
   return (
     <div className='App'>
       <BrowserRouter>
-      <NavBar />
+      <NavBar cartNum = {cartNum}/>
       <Routes>
         <Route
-          path = '/' element = {<Films films={films}/>}
+          path = '/' element = {<Films films={films} add = {addDay} remove = {removeDay} refresh = {refreshCart}/>}
         />
         <Route
-          path = '/cart' element = {<Cart />}
+          path = '/cart' element = {<Cart films = {cartFilms} empty = {emptyCart}/>}
         />
       </Routes>
       </BrowserRouter>

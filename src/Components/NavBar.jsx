@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MdShoppingCart} from 'react-icons/md'
 import { RiMovie2Fill } from 'react-icons/ri'
 
-function NavBar() {
+function NavBar({cartNum}) {
   return (
     <div className='navBar'>
       <div className='titleContainer'>
@@ -15,7 +15,7 @@ function NavBar() {
         </Link>
         <Link to = '/cart' className='link'>
             <MdShoppingCart className='icon'/>
-            <p>143</p>
+            <p>{cartNum}</p>
         </Link>
         </div>
     </div>

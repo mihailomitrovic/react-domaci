@@ -1,17 +1,14 @@
 import React from 'react'
 import Film from './Film';
 
-function Films({films}) {
+function Films({films, add, remove, refresh}) {
   return (
-    <div>
-      <h1 className='available'>CURRENTLY AVAILABLE</h1>
+    <div className='frame'>
+      <h1 className='subtitle'>CURRENTLY AVAILABLE</h1>
       <div className='films'>
-        <Film data = {films[0]}/>
-        <Film data = {films[1]}/>
-        <Film data = {films[2]}/>
-        <Film data = {films[3]}/>
-        <Film data = {films[4]}/>
-        <Film data = {films[5]}/>
+        {films.map((film) => {
+          return <Film data = {film} key = {film.id} add = {add} remove = {remove} refresh = {refresh} inCart = {0}/>
+        })}
       </div>
     </div>
   );
