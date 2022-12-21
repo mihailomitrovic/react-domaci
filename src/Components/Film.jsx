@@ -16,6 +16,7 @@ function Film({data, add, remove, refresh, inCart, removeDayCart, addDayCart, em
                 <h1>{data.title}</h1>
                 <p><span style={{fontWeight: 'bold'}}>Year</span>: {data.year}</p>
                 <p><span style={{fontWeight: 'bold'}}>Genre</span>: {data.genre}</p>
+                <p><span style={{fontWeight: 'bold'}}>Director:</span>: {data.director}</p>
                 <p className='tagline'>{data.tagline}</p>
             </div>
          </div>
@@ -49,8 +50,8 @@ function Film({data, add, remove, refresh, inCart, removeDayCart, addDayCart, em
 
             <div className='dataSubcontainerb'>
                 <h1 style={{marginLeft: 0.72 + "em"}}>{data.title}</h1>
+                <p className='datab'>{data.director}</p>
                 <p className='datab'>{data.year} • {data.genre}</p>
-                <p className='taglineb'>{data.tagline}</p>
                 <div className='btnscart'>
                     <p className='days' style={{marginLeft: 1.1 + "em"}}>Days: {data.cartDays}</p>
                     <div className='btnsSubCart'>
