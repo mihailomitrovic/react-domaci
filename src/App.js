@@ -84,9 +84,9 @@ function App() {
     },
     {
       id: 6,
-      title: "The Triangle of Sadness",
+      title: "Triangle of Sadness",
       image: {
-        jpg: require('./posters/thetriangleofsadness.jpg')
+        jpg: require('./posters/triangleofsadness.jpg')
       },
       synopsis:
         "A celebrity model couple are invited on a luxury cruise for the uber-rich, helmed by an unhinged captain. What first appeared Instagrammable ends catastrophically, leaving the survivors stranded on a desert island and fighting for survival.",
@@ -127,7 +127,6 @@ function App() {
   }
 
   function refreshCart(id) { 
-
     let newFilms = films.filter((film) => film.cartDays > 0);
     setCartFilms(newFilms);
 
@@ -138,16 +137,66 @@ function App() {
         }
         return {...film, days: 0, cartDays: film.cartDays, cart: 1};
       }
-
-        
       return film;
     });
 
     setFilms(updatedFilms);
   }
-  
-  function emptyCart() {
 
+  function addDayCart(id) {
+    let newFilms = films.filter((film) => film.cart === 1);
+    setCartFilms(newFilms);
+
+    const updatedFilms = films.map((film) => {
+      if (film.id === id) {
+        return {...film, cartDays: ++film.cartDays};
+      }
+
+      return film;
+    })
+
+    setFilms(updatedFilms);
+  }
+
+  function removeDayCart(id) { 
+    let newFilms = films.filter((film) => film.cart === 1);
+    setCartFilms(newFilms);
+
+    const updatedFilms = films.map((film) => {
+      if (film.id === id) {
+        return {...film, cartDays: film.cartDays - 1 >= 1 ? --film.cartDays : 1};
+      }
+
+      return film;
+    })
+
+    setFilms(updatedFilms);
+  }
+  
+  function emptyCart(id) {
+    let newFilms = films.filter((film) => film.id !== id && film.cartDays > 0);
+    setCartFilms(newFilms);
+
+    const updatedFilms = films.map((film) => {
+      if (film.id === id && film.cartDays > 0) {
+        return {...film, days: 0, cartDays: 0, cart: 0};
+      }
+      return film;
+    });
+    setFilms(updatedFilms);
+    setCartNum(cartNum - 1);
+  }
+
+  function deleteCart(id) {
+    let newFilms = films.filter((film) => film.cartDays === -1);
+    setCartFilms(newFilms);
+
+    const updatedFilms = films.map((film) => {
+        return {...film, days: 0, cartDays: 0, cart: 0};
+    });
+    setFilms(updatedFilms);
+
+    setCartNum(0)
   }
 
   return (
@@ -159,7 +208,7 @@ function App() {
           path = '/' element = {<Films films={films} add = {addDay} remove = {removeDay} refresh = {refreshCart}/>}
         />
         <Route
-          path = '/cart' element = {<Cart films = {cartFilms} empty = {emptyCart}/>}
+          path = '/cart' element = {<Cart films = {cartFilms} cartNum = {cartNum} empty = {emptyCart} removeDayCart = {removeDayCart} addDayCart = {addDayCart} deleteCart = {deleteCart}/>}
         />
       </Routes>
       </BrowserRouter>

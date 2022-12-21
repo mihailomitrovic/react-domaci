@@ -2,7 +2,7 @@ import React from 'react'
 import { IoMdAdd, IoMdRemove } from 'react-icons/io'
 import { FaTrashAlt } from 'react-icons/fa'
 
-function Film({data, add, remove, refresh, inCart}) {    
+function Film({data, add, remove, refresh, inCart, removeDayCart, addDayCart, empty}) {    
   return (
     <div className={inCart === 0 ? 'film' : 'filmb'}>
         {inCart === 0 ? (
@@ -26,7 +26,7 @@ function Film({data, add, remove, refresh, inCart}) {
                 <button className='btn1' onClick={() => add(data.id)}>
                     <IoMdAdd className='btn'/>
                 </button>
-                <button className='btn1' onClick={() => remove(data.id)}>
+                <button className={data.days > 0 ? 'btn1' : 'btn1rem'} onClick={() => remove(data.id)}>
                     <IoMdRemove className='btn'/>
                 </button>
             </div>
@@ -54,10 +54,10 @@ function Film({data, add, remove, refresh, inCart}) {
                 <div className='btnscart'>
                     <p className='days' style={{marginLeft: 1.1 + "em"}}>Days: {data.cartDays}</p>
                     <div className='btnsSubCart'>
-                    <button className='btn1b' onClick={() => add(data.id)}>
+                    <button className='btn1b' onClick={() => addDayCart(data.id)}>
                         <IoMdAdd className='btn'/>
                     </button>
-                    <button className='btn1b' onClick={() => remove(data.id)}>
+                    <button className={data.cartDays > 1 ? 'btn1b' : 'btn1brem'} onClick={() => removeDayCart(data.id)}>
                         <IoMdRemove className='btn'/>
                     </button>
                 </div>
@@ -67,7 +67,7 @@ function Film({data, add, remove, refresh, inCart}) {
 
         <div className='btns'>
             <div className='btnsSub'>
-            <button className='trash' onClick={() => refresh(data.id)}>
+            <button className='trash' onClick={() => empty(data.id)}>
                 <FaTrashAlt className='btnb'/>
             </button>
         </div>    
