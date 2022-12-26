@@ -14,10 +14,10 @@ function Film({data, add, remove, refresh, inCart, removeDayCart, addDayCart, em
 
             <div className='dataSubcontainer'>
                 <h1>{data.title}</h1>
+                <p className='tagline'>{data.tagline}</p>
                 <p><span style={{fontWeight: 'bold'}}>Year</span>: {data.year}</p>
                 <p><span style={{fontWeight: 'bold'}}>Genre</span>: {data.genre}</p>
                 <p><span style={{fontWeight: 'bold'}}>Director:</span>: {data.director}</p>
-                <p className='tagline'>{data.tagline}</p>
             </div>
          </div>
          <p>{data.synopsis}</p>

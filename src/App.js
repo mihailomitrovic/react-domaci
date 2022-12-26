@@ -9,6 +9,22 @@ function App() {
   const [films, setFilms] = useState([
     {
       id: 1,
+      title: "Aftersun",
+      image: {
+        jpg: require('./posters/aftersun.jpg')
+      },
+      synopsis:
+        "Sophie reflects on the shared joy and private melancholy of a holiday she took with her father twenty years earlier. Memories real and imagined fill the gaps between miniDV footage as she tries to reconcile the father she knew with the man she didn't.",
+      year: "2022",
+      genre: "Drama",
+      director: "Charlotte Wells",
+      tagline: "Memory burns",
+      days: 0,
+      cartDays: 0,
+      cart: 0
+    },
+    {
+      id: 2,
       title: "Decision to Leave",
       image: {
         jpg: require('./posters/decisiontoleave.jpg')
@@ -24,7 +40,7 @@ function App() {
       cart: 0
     },
     {
-      id: 2,
+      id: 3,
       title: "She Said",
       image: {
         jpg: require('./posters/shesaid.jpg')
@@ -40,7 +56,7 @@ function App() {
       cart: 0
     },
     {
-      id: 3,
+      id: 4,
       title: "Tár",
       image: {
         jpg: require('./posters/tar.jpg')
@@ -56,7 +72,7 @@ function App() {
       cart: 0
     },
     {
-      id: 4,
+      id: 5,
       title: "The Banshees of Inisherin",
       image: {
         jpg: require('./posters/thebansheesofinisherin.jpg')
@@ -72,7 +88,7 @@ function App() {
       cart: 0
     },
     {
-      id: 5,
+      id: 6,
       title: "The Fabelmans",
       image: {
         jpg: require('./posters/thefabelmans.jpg')
@@ -88,7 +104,23 @@ function App() {
       cart: 0
     },
     {
-      id: 6,
+      id: 7,
+      title: "The Woman King",
+      image: {
+        jpg: require('./posters/thewomanking.jpg')
+      },
+      synopsis:
+        "The story of the Agojie, the all-female unit of warriors who protected the African Kingdom of Dahomey in the 1800s with skills and a fierceness unlike anything the world has ever seen, and General Nanisca as she trains the next generation of recruits and readies them for battle against an enemy determined to destroy their way of life.",
+      year: "2022",
+      genre: "Action, Drama, History",
+      director: "Gina Prince-Bythewood",
+      tagline: "Her reign begins",
+      days: 0,
+      cartDays: 0,
+      cart: 0
+    },
+    {
+      id: 8,
       title: "Triangle of Sadness",
       image: {
         jpg: require('./posters/triangleofsadness.jpg')
