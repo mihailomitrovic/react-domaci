@@ -17,18 +17,18 @@ function Film({data, add, remove, refresh, inCart, removeDayCart, addDayCart, em
                 <p className='tagline'>{data.tagline}</p>
                 <p><span style={{fontWeight: 'bold'}}>Year</span>: {data.year}</p>
                 <p><span style={{fontWeight: 'bold'}}>Genre</span>: {data.genre}</p>
-                <p><span style={{fontWeight: 'bold'}}>Director:</span>: {data.director}</p>
+                <p><span style={{fontWeight: 'bold'}}>Director</span>: {data.director}</p>
             </div>
          </div>
          <p>{data.synopsis}</p>
 
         <div className='btns'>
             <div className='btnsSub'>
-                <button className='btn1' onClick={() => add(data.id)}>
-                    <IoMdAdd className='btn'/>
-                </button>
                 <button className={data.days > 0 ? 'btn1' : 'btn1rem'} onClick={() => remove(data.id)}>
                     <IoMdRemove className='btn'/>
+                </button>
+                <button className='btn1' onClick={() => add(data.id)}>
+                    <IoMdAdd className='btn'/>
                 </button>
             </div>
 

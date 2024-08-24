@@ -200,7 +200,6 @@
 .dataContainer {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .dataContainer h1 {

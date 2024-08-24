@@ -50,7 +50,7 @@ function App() {
       year: "2022",
       genre: "Drama, History",
       director: "Maria Schrader",
-      tagline: "\"Will you go on the record?\"",
+      tagline: "\"Will you go on record?\"",
       days: 0,
       cartDays: 0,
       cart: 0
